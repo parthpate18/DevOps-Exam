@@ -1,0 +1,26 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./backend:/usr/src/app
+    networks:
+      - hospital-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./frontend:/usr/src/app
+    networks:
+      - hospital-network
+
+networks:
+  hospital-network:
